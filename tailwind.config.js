@@ -1,3 +1,6 @@
+const { Opacity } = require('@mui/icons-material');
+const { width } = require('@mui/system');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
     darkMode: ["class"],
@@ -8,16 +11,27 @@ module.exports = {
   ],
   theme: {
   	extend: {
+
+		keyframes: {
+			typing: {
+			  from: { width: '0' },
+			  to: { width: '100%' },
+			},
+			cursor: {
+			  '50%': { borderColor: 'transparent' },
+			},
+		  },
+		  animation: {
+			typing: 'typing 2s steps(26) 1s forwards', // Adjust the steps based on text length
+			cursor: 'cursor .75s step-end infinite',
+		  },
+
   		colors: {
   			background: 'var(--background)',
   			foreground: 'var(--foreground)'
   		},
-  		borderRadius: {
-  			lg: 'var(--radius)',
-  			md: 'calc(var(--radius) - 2px)',
-  			sm: 'calc(var(--radius) - 4px)'
-  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],
 };
+
