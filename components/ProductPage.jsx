@@ -5,24 +5,20 @@ import { Canvas } from "react-three-fiber";
 import Chair from "./Chair";
 import { Chair_gray } from "./Chair_gray";
 import { Chair_green } from "./Chair_green";
-import QuantityInput from "./Increment";
-import UnstyledButtonCustom from "./AddToCard";
-import {useTypewriter, Cursor} from 'react-simple-typewriter'
+import Typewriter from "typewriter-effect";
+import { Button } from "@/components/ui/button"
+import { ShoppingCart } from 'lucide-react';
+
 
 export default function ProductPage() {
-  const [selectedModel, setSelectedModel] = useState("chair");// état pour suivre le modèle sélectionné
-
-  const {text} = useTypewriter({
-    words : ['Devlopper', 'Designer', 'Photographer'],
-    loop: {},
-  })
+  const [selectedModel, setSelectedModel] = useState("chair"); // état pour suivre le modèle sélectionné
 
   return (
     <section className="bg-[#F4F4F4] flex justify-center flex-col items-center h-[715px] ">
       <div className="flex justify-between items-end gap-10 px-8 border">
         {/* bloc image produit */}
         <div className="h-[50vh] w-[50vh] border">
-          <Canvas className="bg-orange-400 ">
+          <Canvas className="bg-white ">
             <Environment preset="studio" />
             <OrbitControls autoRotate autoRotateSpeed={5} />
             {/* Affichage conditionnel des modèles en fonction de l'état */}
@@ -34,20 +30,25 @@ export default function ProductPage() {
 
         {/* bloc description */}
         <div className="h-[436px] justify-center flex flex-col gap-[12px] w-[472px]  ">
-          <div className="flex flex-col gap-[16px] " >
-            <div className="text-orange-600">HIGH CHAIR COMPANY</div>
-            
-            
-            
-            <div className="font-bold text-[36px]" >
-             Office chair <span> {text} </span>       
-             <Cursor/> 
+          <div className="flex flex-col gap-[10px] ">
+            <div className="font-bold text-[36px]">
+            Ergonomic Office chair 
+              <span  className="text-red-600 text-[20px] ">
+                <Typewriter
+                  options={{
+                    strings: ["50% discount", "On Stock"],
+                    autoStart: true,
+                    loop: true,
+                  }}
+                />
+              </span>
+              
             </div>
 
             <div className="text-[16px] ">
-              These low-profile sneakers are your perfect casual wear companion.
-              Featuring a durable rubber outer sole, they'll withstand
-              everything the weather can offer.
+            the perfect solution for long hours of work or relaxation. Crafted with your comfort in mind, 
+            this chair features an adjustable lumbar support, breathable mesh backrest, and a durable, sleek design. 
+            
             </div>
           </div>
           {/* prix et réduction */}
@@ -69,18 +70,27 @@ export default function ProductPage() {
             $250.00
           </div>
 
-          <div className="flex justify-start ">
-            <QuantityInput />
-          </div>
+          <div className="flex justify-start gap-2 ">
+          <Button variant="Outline" className='flex items-center bg-white border-black justify-between gap-2 h-12  ' >
+             <div className=" flex items-center tex-4 justify-center  rounded-full border-black border-1 " >-</div>
+             <div className=" flex items-center justify-center rounded-lg border-black border-1" > 1 </div>
+             <div className=" flex items-center justify-center rounded-full border-black border-1" >+</div>
+          </Button>
 
           <div>
-            <UnstyledButtonCustom />
+              <Button variant="outline" className='hover:bg-orange-100 bg-orange-400 h-12 ' ><ShoppingCart className="w-4 mr-2" />
+              Add To Card</Button>
           </div>
+          </div>
+
+          
         </div>
       </div>
 
-      <div className="flex w-40 bg-white justify-center mt-3 mx-96 gap-2 border 
-        hover:scale-110 hover:transition-all rounded-full py-4">
+      <div
+        className="flex w-40 bg-white justify-center mt-3 mx-96 gap-2 border 
+        hover:scale-110 hover:transition-all rounded-full py-4"
+      >
         <button
           className="border rounded-full w-8 h-8 bg-sky-600"
           onClick={() => setSelectedModel("chair")} // Afficher la chaise principal

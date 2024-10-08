@@ -29,7 +29,8 @@
     "react-three-fiber": "^6.0.13",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "three": "^0.169.0"
+    "three": "^0.169.0",
+    "typewriter-effect": "^2.2.0"
   },
   "devDependencies": {
     "eslint": "^8",
