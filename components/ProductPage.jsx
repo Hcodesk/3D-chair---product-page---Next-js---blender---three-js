@@ -33,7 +33,7 @@ export default function ProductPage() {
           <div className="flex flex-col gap-[10px] ">
             <div className="font-bold text-[36px]">
             Ergonomic Office chair 
-              <span  className="text-red-600 text-[20px] ">
+              <span  className="text-orange-600 text-[20px] ">
                 <Typewriter
                   options={{
                     strings: ["50% discount", "On Stock"],
